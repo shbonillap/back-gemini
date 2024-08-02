@@ -1,0 +1,11 @@
+{
+  "name": "gemini",
+  "version": "1.0.0",
+  "description": "Ayudante de estudio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sheila, Sergio y Renato",
+  "license": "ISC"
+}
