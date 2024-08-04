@@ -1,0 +1,14 @@
+{
+  "name": "gemini",
+  "version": "1.0.0",
+  "description": "Ayudante de estudio",
+  "main": "src/index.js",
+  "author": "Sheila, Sergio y Renato",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "express": "^4.19.2",
+    "gemini-ai": "^2.2.1"
+  },
+  "type": "commonjs"
+}
