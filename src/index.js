@@ -1,10 +1,10 @@
-import express from "express";
-import api from "./api.js"
+const express = require('express')
+const {run} =  require("./api.js");
 const app = express();
 
 app.get('/', (req, res) => {
   res.send('¡Hola Mundo!');
-  api.run()
+  run()
 });
 
 app.listen(3000, async() => {

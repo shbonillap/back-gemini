@@ -10,5 +10,5 @@
     "express": "^4.19.2",
     "gemini-ai": "^2.2.1"
   },
-  "type": "module"
+  "type": "commonjs"
 }
