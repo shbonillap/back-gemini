@@ -1,7 +1,11 @@
 const express = require('express')
-const {resume, exam, exercisebychapter} =  require("./api-text.js");
+const { resume, exam, exercisebychapter } = require("./api-text.js");
 const app = express();
 const multer = require('multer');
+const cors = require('cors');
+app.use(cors());
+
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -22,36 +26,36 @@ app.post('/upload', upload.single('archivo'), (req, res) => { // Primera petici�
   res.json({ mensaje: 'Archivo recibido con éxito', archivo });
 });
 
-app.get('/resume/:name', async(req, res) => { //Get de un resumen
-  if(req.params.name){
+app.get('/resume/:name', async (req, res) => { //Get de un resumen
+  if (req.params.name) {
     const result = await resume(req.params.name)
     res.send(result)
   }
-  else{
+  else {
     res.send('No se ha podido crear el resumen');
   }
 });
 
-app.get('/exam/:name', async(req, res) => { // Get de un examen
-  if(req.params.name){
+app.get('/exam/:name', async (req, res) => { // Get de un examen
+  if (req.params.name) {
     const result = await exam(req.params.name)
     res.send(result)
   }
-  else{
+  else {
     res.send('No se ha podido crear el examen');
   }
 });
 
-app.get('/exercisebychapter/:name', async(req, res) => { //Get de ejercicios por capítulos
-  if(req.params.name){
+app.get('/exercisebychapter/:name', async (req, res) => { //Get de ejercicios por capítulos
+  if (req.params.name) {
     const result = await exercisebychapter(req.params.name)
     res.send(result)
   }
-  else{
+  else {
     res.send('No se han podido crear los ejercicios');
   }
 });
 
-app.listen(3000, async() => {
+app.listen(3000, async () => {
   console.log('El servidor está en funcionamiento en el puerto 3000.');
 });

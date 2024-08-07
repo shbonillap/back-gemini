@@ -8,6 +8,7 @@
   "dependencies": {
     "@google-cloud/vision": "^4.3.0",
     "@google/generative-ai": "^0.16.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "gemini-ai": "^2.2.1",
