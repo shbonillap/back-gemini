@@ -14,5 +14,9 @@
     "gemini-ai": "^2.2.1",
     "multer": "^1.4.5-lts.1"
   },
-  "type": "commonjs"
+  "type": "commonjs",
+  "scripts": {
+    "server": "node src/index.js", 
+    "dev": "nodemon src/index.js"
+  }
 }
