@@ -39,6 +39,21 @@ async function resume(name) {
   }
 }
 
+async function extendResume(name, resume) {
+  const prompt = "Extiendeme este resumen:"+resume;
+  try {
+    const pdf = [fileToGenerativePart(name, "application/pdf")];
+    const result = await model.generateContent([prompt, ...pdf]);
+    const response = await result.response;
+    const text = await response.text();
+    console.log(text);
+    return text;
+  } catch (error) {
+    console.error("Error procesando el archivo:", error.message);
+    throw error;
+  }
+}
+
 async function exam(name) {
   const prompt = "Hazme un examen con preguntas y respuestas en español";
   try {
@@ -69,4 +84,4 @@ async function exercisebychapter(name) {
   }
 }
 
-module.exports = { resume, exam, exercisebychapter };
+module.exports = { resume, exam, exercisebychapter,extendResume };
