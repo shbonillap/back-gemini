@@ -55,15 +55,17 @@ async function extendResume(name, resume) {
 }
 
 async function exam(name) {
-  const prompt = "Hazme un examen con preguntas y respuestas en español";
+  const prompt = "Hazme un examen tipo test de 10 preguntas.Las preguntas y respuestas en español dandome como resultado un json con el siguiente formato { \"preguntas\": [ { \"enunciado\": \"Escribe aquí el enunciado de la primera pregunta.\", \"respuesta1\": \"Opción de respuesta 1\", \"respuesta2\": \"Opción de respuesta 2\", \"respuesta3\": \"Opción de respuesta 3\", \"respuesta4\": \"Opción de respuesta 4\", \"solucion\": \"Número de la respuesta correcta (1, 2, 3 o 4)\" } ] }";
+
   try {
     const pdf = [fileToGenerativePart(name, "application/pdf")];
     const result = await model.generateContent([prompt, ...pdf]);
     const response = await result.response;
-    const text = await response.text();
-    console.log(text);
-    return text;
-  } catch (error) {
+    let text = await response.text();
+    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    return JSON.parse(text);
+    } 
+    catch (error) {
     console.error("Error procesando el archivo:", error.message);
     throw error;
   }

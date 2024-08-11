@@ -19,7 +19,6 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-
 const upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('archivo'), (req, res) => { // Primera petición necesaria para cargar el archivo
