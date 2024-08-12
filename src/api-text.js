@@ -55,7 +55,7 @@ async function extendResume(name, resume) {
 }
 
 async function exam(name) {
-  const prompt = "Create a multiple-choice test with 10 questions. The questions and answers should be in English, and the output should be a JSON with the following format: { \"preguntas\": [ { \"enunciado\": \"Escribe aquí el enunciado de la primera pregunta.\", \"respuesta1\": \"Opción de respuesta 1\", \"respuesta2\": \"Opción de respuesta 2\", \"respuesta3\": \"Opción de respuesta 3\", \"respuesta4\": \"Opción de respuesta 4\", \"solucion\": \"Número de la respuesta correcta (1, 2, 3 o 4)\" } ] }";
+  const prompt = "Create a multiple-choice test with 10 questions. The questions and answers should be in English, and the output should be a JSON with the following format: { \"preguntas\": [ { \"enunciado\": \"Write here the first question.\", \"respuesta1\": \"Option 1 for this question\", \"respuesta2\": \"Option 2 for this question\", \"respuesta3\": \"Option 3 for this question\", \"respuesta4\": \"Option 4 for this question\", \"solucion\": \"Number for correct answer (1, 2, 3 or 4)\" } ] }";
 
   try {
     const pdf = [fileToGenerativePart(name, "application/pdf")];
@@ -72,7 +72,7 @@ async function exam(name) {
 }
 
 async function exercisebychapter(name) {
-  const prompt = "Give me a non-multiple-choice exercise with its answer. The question and the answer should be in English, and the output should be a JSON with the following format: (\"pregunta\": [ { \"enunciado\": \"Escribe aquí el enunciado de la pregunta.\", \"respuesta\": \"Respuesta a la pregunta\")";
+  const prompt = "Give me a non-multiple-choice exercise with its answer. The question and the answer should be in English, and the output should be a JSON with the following format: (\"pregunta\": [ { \"enunciado\": \"Write the exercise here.\", \"respuesta\": \"Write the solution here\")";
   try {
     const pdf = [fileToGenerativePart(name, "application/pdf")];
     const result = await model.generateContent([prompt, ...pdf]);
