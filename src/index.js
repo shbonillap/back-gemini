@@ -23,7 +23,6 @@ const upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('archivo'), (req, res) => { // Primera petición necesaria para cargar el archivo
   const archivo = req.file;
-  console.log('Archivo recibido:', archivo);
   if (!archivo) {
     return res.status(400).json({ mensaje: 'No se recibió ningún archivo' });
   }
@@ -67,5 +66,5 @@ app.get('/exercisebychapter/:name', async (req, res) => { // Get de ejercicios p
 });
 
 app.listen(3000, async () => {
-  console.log('El servidor está en funcionamiento en el puerto 3000.');
+  console.log('Server is working on port 3000.');
 });

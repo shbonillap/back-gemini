@@ -12,11 +12,12 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "gemini-ai": "^2.2.1",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "utf8": "^3.0.0"
   },
   "type": "commonjs",
   "scripts": {
-    "server": "node src/index.js", 
+    "server": "node src/index.js",
     "dev": "nodemon src/index.js"
   }
 }
