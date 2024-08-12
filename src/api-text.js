@@ -41,7 +41,7 @@ async function resume(name) {
 
 async function extendResume(name, resume) {
   resume = utf8.decode(resume);
-  const prompt = "Extend this summary: "+resume;
+  const prompt = "Extend this summary: " + resume;
   try {
     const pdf = [fileToGenerativePart(name, "application/pdf")];
     const result = await model.generateContent([prompt, ...pdf]);
@@ -64,8 +64,8 @@ async function exam(name) {
     let text = await response.text();
     text = text.replace(/```json/g, '').replace(/```/g, '').trim();
     return JSON.parse(text);
-    } 
-    catch (error) {
+  }
+  catch (error) {
     console.error("Error:", error.message);
     throw error;
   }
@@ -86,4 +86,4 @@ async function exercisebychapter(name) {
   }
 }
 
-module.exports = { resume, exam, exercisebychapter,extendResume };
+module.exports = { resume, exam, exercisebychapter, extendResume };

@@ -1,5 +1,5 @@
 const express = require('express');
-const { resume, exam, exercisebychapter,extendResume } = require("./api-text.js");
+const { resume, exam, exercisebychapter, extendResume } = require("./api-text.js");
 const app = express();
 const multer = require('multer');
 const cors = require('cors');
@@ -40,7 +40,7 @@ app.get('/resume/:name', async (req, res) => { // Get de un resumen
 
 app.get('/extendResume/:name/:resume', async (req, res) => { // Get de un resumen
   if (req.params.name) {
-    const result = await extendResume(req.params.name,req.params.resume)
+    const result = await extendResume(req.params.name, req.params.resume)
     res.send(result)
   } else {
     res.send('No se ha podido crear el resumen');
