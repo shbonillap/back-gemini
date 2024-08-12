@@ -72,12 +72,13 @@ async function exam(name) {
 }
 
 async function exercisebychapter(name) {
-  const prompt = "Ponme un ejercicio por cada capítulo";
+  const prompt = "Ponme un ejercicio que no sea de test con su respuesta. La pregunta y la respuesta en español dandome como resultado un JSON con el siguiente formato (\"pregunta\": [ { \"enunciado\": \"Escribe aquí el enunciado de la pregunta.\", \"respuesta\": \"Respuesta a la pregunta\")";
   try {
     const pdf = [fileToGenerativePart(name, "application/pdf")];
     const result = await model.generateContent([prompt, ...pdf]);
     const response = await result.response;
-    const text = await response.text();
+    let text = await response.text();
+    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
     console.log(text);
     return text;
   } catch (error) {
